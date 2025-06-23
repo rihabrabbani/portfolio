@@ -3,13 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --primary: #e6a61e;
+  --primary-dark: #d9880c;
+  --secondary: #2c4035;
+  --secondary-light: #3d5d4e;
+  --accent: #f8c054;
+  --neutral-light: #f5f5f5;
+  --neutral: #e0e0e0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +22,100 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Font definitions */
+.font-raleway {
+  font-family: var(--font-raleway);
+}
+
+.font-cormorant {
+  font-family: var(--font-cormorant);
+}
+
+.font-abril {
+  font-family: var(--font-abril);
+}
+
+.font-playfair {
+  font-family: var(--font-playfair);
+}
+
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+
+/* Text styles */
+.main-heading {
+  font-family: var(--font-abril);
+  letter-spacing: -0.025em;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-cormorant);
+}
+
+.accent-text {
+  font-family: var(--font-abril);
+}
+
+.body-text {
+  font-family: var(--font-raleway);
+}
+
+.number-text {
+  font-family: var(--font-playfair);
+}
+
+/* Enhanced styling elements */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.text-shadow-sm {
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.fancy-border-gradient {
+  position: relative;
+  border: double 1px transparent;
+  background-image: linear-gradient(white, white), 
+                    linear-gradient(to right, var(--primary), var(--secondary));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+  0% {
+    transform: rotate(30deg) translateX(-300%);
+  }
+  100% {
+    transform: rotate(30deg) translateX(300%);
+  }
 }

@@ -1,0 +1,129 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+
+interface ProjectStat {
+  label: string;
+  value: string;
+}
+
+interface ProjectCardProps {
+  title: string;
+  subtitle: string;
+  description: string;
+  technologies: string[];
+  gradient: string;
+  link: string;
+  linkText: string;
+  date: string;
+  badgeText: string;
+  badgeColor: string;
+  stats: ProjectStat[];
+}
+
+export default function ProjectCard({
+  title,
+  subtitle,
+  description,
+  technologies,
+  gradient,
+  link,
+  linkText,
+  date,
+  badgeText,
+  badgeColor,
+  stats
+}: ProjectCardProps) {
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.5 }}
+      className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
+      whileHover={{ y: -8 }}
+    >
+      <div className="relative h-64 overflow-hidden">
+        {/* Project Image/Gradient */}
+        <motion.div 
+          className={`absolute inset-0 ${gradient} flex items-center justify-center text-white`}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="p-6 text-center">
+            <div className="text-white text-5xl mb-4 font-bold font-abril">{title.split(' ')[0]}</div>
+            <p className="text-white/90 font-raleway">{subtitle}</p>
+          </div>
+        </motion.div>
+        
+        {/* Project overlay with quick stats */}
+        <motion.div 
+          className="absolute inset-0 bg-black/60 backdrop-blur-sm flex flex-col justify-end p-6"
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="bg-white/10 backdrop-blur-md p-3 rounded-lg">
+            <div className="grid grid-cols-2 gap-2 text-center">
+              {stats.map((stat, i) => (
+                <div key={i} className="flex flex-col">
+                  <span className="text-white/80 text-xs font-raleway">{stat.label}</span>
+                  <span className="text-white font-medium font-raleway">{stat.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+      
+      <div className="p-6">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="text-xl font-bold text-[#2c4035] font-cormorant">{title}</h3>
+          <div className={`${badgeColor} text-xs font-medium px-2.5 py-0.5 rounded-full font-raleway`}>
+            {badgeText}
+          </div>
+        </div>
+        <p className="text-gray-600 mb-4 font-raleway">{description}</p>
+        
+        {/* Technologies */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {technologies.map((tech) => (
+            <motion.span 
+              key={tech} 
+              className="bg-[#f5f5f5] text-[#2c4035] px-3 py-1 rounded-full text-xs font-medium hover:bg-[#e6a61e]/10 transition-colors font-raleway"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {tech}
+            </motion.span>
+          ))}
+        </div>
+        
+        <div className="flex justify-between items-center">
+          <motion.a 
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#e6a61e] font-medium flex items-center gap-1 hover:text-[#2c4035] transition-colors group font-raleway"
+            whileHover={{ x: 3 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span>{linkText}</span>
+            <motion.svg 
+              className="w-4 h-4" 
+              viewBox="0 0 20 20" 
+              fill="currentColor"
+              animate={{ x: 0 }}
+              whileHover={{ x: 3 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+            >
+              <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            </motion.svg>
+          </motion.a>
+          <span className="text-gray-400 text-sm font-raleway">{date}</span>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
