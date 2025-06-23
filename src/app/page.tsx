@@ -1,6 +1,5 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
@@ -13,8 +12,6 @@ import SectionHeading from '@/components/SectionHeading';
 import StatCard from '@/components/StatCard';
 
 export default function Home() {
-  const { scrollYProgress } = useScroll();
-  const backgroundOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.3]);
   const [floatingElements, setFloatingElements] = useState<any[]>([]);
   const [decorativeLights, setDecorativeLights] = useState<any[]>([]);
 
@@ -196,57 +193,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_#f7efe8_10%,_#ffffff_70%)] font-raleway relative overflow-hidden">
-      {/* Enhanced Dynamic Background Elements */}
-      <motion.div 
-        className="fixed top-0 right-0 w-[800px] h-[800px] bg-[#f5e9d9] rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 z-0"
-        style={{ opacity: backgroundOpacity }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.4 }}
-        transition={{ duration: 1.5 }}
-      ></motion.div>
-      <motion.div 
-        className="fixed bottom-20 left-0 w-[600px] h-[600px] bg-[#e6f0ed] rounded-full blur-3xl translate-y-1/4 -translate-x-1/4 z-0"
-        style={{ opacity: backgroundOpacity }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.3 }}
-        transition={{ duration: 1.5, delay: 0.3 }}
-      ></motion.div>
-      <motion.div 
-        className="fixed top-1/2 left-1/2 w-[300px] h-[300px] bg-[#f8d7a7] rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 z-0"
-        style={{ opacity: backgroundOpacity }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.2 }}
-        transition={{ duration: 1.5, delay: 0.6 }}
-      ></motion.div>
-      
-      {/* Enhanced Floating Elements for Visual Interest - Client-side rendered */}
-      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        {floatingElements.map((element) => (
-          <motion.div
-            key={element.id}
-            className="absolute rounded-full mix-blend-multiply opacity-30"
-            style={{
-              width: element.width,
-              height: element.height,
-              backgroundColor: element.backgroundColor,
-            }}
-            initial={{ 
-              x: element.x,
-              y: element.y,
-              scale: element.scale 
-            }}
-            animate={{
-              x: [null, element.targetX, element.x],
-              y: [null, element.targetY, element.y],
-            }}
-            transition={{
-              duration: element.duration,
-              repeat: Infinity,
-              repeatType: 'reverse',
-            }}
-          />
-        ))}
-      </div>
+      {/* Static Background Elements */}
+      <div className="fixed top-0 right-0 w-[800px] h-[800px] bg-[#f5e9d9] rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 z-0 opacity-40"></div>
+      <div className="fixed bottom-20 left-0 w-[600px] h-[600px] bg-[#e6f0ed] rounded-full blur-3xl translate-y-1/4 -translate-x-1/4 z-0 opacity-30"></div>
+      <div className="fixed top-1/2 left-1/2 w-[300px] h-[300px] bg-[#f8d7a7] rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 z-0 opacity-20"></div>
       
       {/* Content container with relative z-index */}
       <div className="relative z-10">
@@ -258,38 +208,13 @@ export default function Home() {
 
         {/* Project Showcase Section */}
         <div id="projects" className="py-20 relative overflow-hidden">
-          {/* Enhanced Beautiful Background for Projects Section */}
+          {/* Background for Projects Section */}
           <div className="absolute inset-0 z-0">
             {/* Base gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-white via-[#f7f9f8] to-[#f5f7f6]"></div>
             
             {/* Decorative elements */}
             <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle,_#e6a61e_1px,_transparent_1px)] bg-[size:20px_20px]"></div>
-            <motion.div
-              className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[#2c4035]/5 blur-3xl"
-              animate={{ 
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.5, 0.3] 
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                repeatType: 'reverse',
-              }}
-            />
-            <motion.div
-              className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-[#e6a61e]/5 blur-3xl"
-              animate={{ 
-                scale: [1, 1.3, 1],
-                opacity: [0.2, 0.4, 0.2] 
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                repeatType: 'reverse',
-                delay: 2
-              }}
-            />
             
             {/* Accent lines */}
             <div className="absolute top-16 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#2c4035]/10 to-transparent"></div>
@@ -316,19 +241,17 @@ export default function Home() {
             </div>
 
             <div className="text-center mt-16">
-              <motion.a 
+              <a 
                 href="https://github.com/rihabrabbani" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#2c4035] to-[#1e2e26] hover:from-[#e6a61e] hover:to-[#f8c054] transition-all duration-500 text-white px-8 py-3 rounded-full font-poppins font-medium shadow-lg hover:shadow-xl"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#2c4035] to-[#1e2e26] text-white px-8 py-3 rounded-full font-poppins font-medium shadow-lg"
               >
                 <span>View All Projects</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
-              </motion.a>
+              </a>
             </div>
           </div>
         </div>
@@ -367,13 +290,7 @@ export default function Home() {
             />
 
             <div className="grid md:grid-cols-2 gap-10">
-              <motion.div 
-                className="bg-white rounded-xl p-8 shadow-lg border border-gray-100 relative overflow-hidden"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
+              <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-100 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-2 h-full bg-[#2c4035]"></div>
                 <h3 className="text-xl font-bold text-[#2c4035] mb-2 font-cormorant">Bachelor of Science in Computer Science</h3>
                 <p className="text-[#e6a61e] font-medium mb-4">FAST University Islamabad</p>
@@ -385,97 +302,41 @@ export default function Home() {
                   <span className="text-gray-500 text-sm">Aug 2022 - Present</span>
                   <div className="px-4 py-1 bg-[#f5f5f5] rounded-full text-sm font-medium text-[#2c4035]">In Progress</div>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div 
-                className="bg-white rounded-xl p-8 shadow-lg border border-gray-100"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
+              <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-100">
                 <h3 className="text-xl font-bold text-[#2c4035] mb-6 font-cormorant">Professional Certifications</h3>
                 
                 <div className="space-y-6">
-                  <motion.div 
-                    className="border-l-2 border-[#e6a61e] pl-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                  >
+                  <div className="border-l-2 border-[#e6a61e] pl-4">
                     <h4 className="font-bold text-gray-800 font-cormorant">The Complete 2024 Web Development Bootcamp</h4>
                     <p className="text-gray-600 text-sm">Udemy (2024)</p>
-                  </motion.div>
+                  </div>
                   
-                  <motion.div 
-                    className="border-l-2 border-[#e6a61e] pl-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                  >
+                  <div className="border-l-2 border-[#e6a61e] pl-4">
                     <h4 className="font-bold text-gray-800 font-cormorant">Visual C++ Programming for Desktop Application Development</h4>
                     <p className="text-gray-600 text-sm">Udemy (2024)</p>
-                  </motion.div>
+                  </div>
                   
-                  <motion.div 
-                    className="border-l-2 border-[#e6a61e] pl-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                  >
+                  <div className="border-l-2 border-[#e6a61e] pl-4">
                     <h4 className="font-bold text-gray-800 font-cormorant">Build Your Portfolio Website with HTML and CSS</h4>
                     <p className="text-gray-600 text-sm">Coursera (2022)</p>
-                  </motion.div>
+                  </div>
                   
-                  <motion.div 
-                    className="border-l-2 border-[#e6a61e] pl-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                  >
+                  <div className="border-l-2 border-[#e6a61e] pl-4">
                     <h4 className="font-bold text-gray-800 font-cormorant">Languages</h4>
                     <p className="text-gray-600">English, Urdu</p>
-                  </motion.div>
+                  </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Enhanced Stats Section */}
+        {/* Stats Section */}
         <div id="achievements" className="bg-gradient-to-r from-[#2c4035] to-[#1e2e26] text-white py-24 mt-20 relative overflow-hidden">
           {/* Use a CSS grid pattern for the background */}
           <div className="absolute inset-0 opacity-10 bg-[linear-gradient(30deg,#ffffff10_1px,transparent_1px),linear-gradient(150deg,#ffffff10_1px,transparent_1px)] bg-[size:25px_25px]"></div>
-          
-          {/* Decorative lights - Client-side rendered */}
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            {decorativeLights.map((light) => (
-              <motion.div
-                key={light.id}
-                className="absolute rounded-full bg-white/10 blur-xl"
-                style={{
-                  top: light.top,
-                  left: light.left,
-                  width: light.width,
-                  height: light.height,
-                }}
-                initial={{ opacity: 0.1 }}
-                animate={{ 
-                  opacity: [0.1, 0.2, 0.1], 
-                  scale: [1, 1.2, 1] 
-                }}
-                transition={{
-                  duration: light.duration,
-                  repeat: Infinity,
-                  repeatType: 'reverse',
-                }}
-              />
-            ))}
-          </div>
           
           <div className="max-w-7xl mx-auto px-8 md:px-20 relative z-10">
             <SectionHeading 
@@ -495,33 +356,24 @@ export default function Home() {
               ))}
             </div>
             
-            {/* Enhanced CTA Button */}
+            {/* CTA Button */}
             <div className="flex justify-center mt-16">
-              <motion.a 
+              <a 
                 href="https://github.com/rihabrabbani" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative overflow-hidden bg-white text-[#2c4035] px-10 py-4 rounded-full shadow-2xl hover:text-white transition-all duration-500 font-poppins font-medium flex items-center gap-3 group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="bg-white text-[#2c4035] px-10 py-4 rounded-full shadow-2xl font-poppins font-medium flex items-center gap-3"
               >
-                <motion.span 
-                  className="absolute inset-0 bg-[#e6a61e] scale-x-0 origin-left"
-                  whileHover={{ scaleX: 1 }}
-                  transition={{ duration: 0.4 }}
-                ></motion.span>
-                <span className="relative z-10">View All Projects</span>
-                <motion.svg 
+                <span>View All Projects</span>
+                <svg 
                   xmlns="http://www.w3.org/2000/svg" 
-                  className="h-5 w-5 relative z-10" 
+                  className="h-5 w-5" 
                   viewBox="0 0 20 20" 
                   fill="currentColor"
-                  whileHover={{ x: 3 }}
-                  transition={{ type: "spring", stiffness: 400 }}
                 >
                   <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </motion.svg>
-              </motion.a>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
@@ -529,3 +381,4 @@ export default function Home() {
     </div>
   );
 }
+          

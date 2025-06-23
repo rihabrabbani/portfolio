@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 interface SocialLink {
@@ -27,69 +26,31 @@ export default function Hero() {
     <main id="home" className="grid md:grid-cols-2 gap-12 px-6 py-24 sm:px-8 md:px-20 md:py-32 max-w-7xl mx-auto relative z-10">
       {/* Left Section - Text Content */}
       <div className="flex flex-col justify-center">
-        {/* Improved Hello There Box */}
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="relative w-max mb-8 group"
-        >
+        {/* Hello There Box */}
+        <div className="relative w-max mb-8 group">
           <div className="border border-gray-300 py-1.5 px-5 bg-white/80 backdrop-blur-sm shadow-sm rounded-md">
             <div className="flex items-center gap-2">
-              <motion.div 
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-                className="w-2 h-2 rounded-full bg-[#e6a61e]"
-              ></motion.div>
+              <div className="w-2 h-2 rounded-full bg-[#e6a61e]"></div>
               <p className="text-gray-700 font-raleway font-medium tracking-wide">Hello There!</p>
             </div>
           </div>
           
-          {/* Enhanced Corner Elements */}
-          <motion.div 
-            className="absolute -top-1.5 -left-1.5 w-3 h-3 border-t-2 border-l-2 border-[#e6a61e]"
-            whileHover={{ width: 24, height: 24 }}
-            transition={{ duration: 0.3 }}
-          ></motion.div>
-          <motion.div 
-            className="absolute -top-1.5 -right-1.5 w-3 h-3 border-t-2 border-r-2 border-[#e6a61e]"
-            whileHover={{ width: 24, height: 24 }}
-            transition={{ duration: 0.3 }}
-          ></motion.div>
-          <motion.div 
-            className="absolute -bottom-1.5 -left-1.5 w-3 h-3 border-b-2 border-l-2 border-[#e6a61e]"
-            whileHover={{ width: 24, height: 24 }}
-            transition={{ duration: 0.3 }}
-          ></motion.div>
-          <motion.div 
-            className="absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b-2 border-r-2 border-[#e6a61e]"
-            whileHover={{ width: 24, height: 24 }}
-            transition={{ duration: 0.3 }}
-          ></motion.div>
-        </motion.div>
+          {/* Corner Elements */}
+          <div className="absolute -top-1.5 -left-1.5 w-3 h-3 border-t-2 border-l-2 border-[#e6a61e]"></div>
+          <div className="absolute -top-1.5 -right-1.5 w-3 h-3 border-t-2 border-r-2 border-[#e6a61e]"></div>
+          <div className="absolute -bottom-1.5 -left-1.5 w-3 h-3 border-b-2 border-l-2 border-[#e6a61e]"></div>
+          <div className="absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b-2 border-r-2 border-[#e6a61e]"></div>
+        </div>
 
-        {/* Enhanced Name and Role */}
-        <motion.div 
-          className="mb-10 relative"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
+        {/* Name and Role */}
+        <div className="mb-10 relative">
           <h1 className="text-5xl md:text-6xl font-bold font-abril leading-tight main-heading">
-            I'm <motion.span
-              className="relative"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
+            I'm <span className="relative">
               <span className="text-[#2c4035] bg-gradient-to-r from-[#e6a61e] to-[#e6a61e] bg-[length:100%_6px] bg-bottom bg-no-repeat pb-2">
                 Rihab Rabbani
               </span>
-              <motion.span 
-                className="absolute -right-13 bottom-5 text-[#e6a61e]"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-              >✦</motion.span>
-            </motion.span>,
+              <span className="absolute -right-13 bottom-5 text-[#e6a61e]">✦</span>
+            </span>,
           </h1>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mt-4 font-cormorant">
             Full-Stack Developer
@@ -99,121 +60,67 @@ export default function Hero() {
               Pakistan
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-[#2c4035]/30"></span>
             </span>
-            <motion.span 
-              className="ml-2 mt-1 inline-block"
-              animate={{ y: [0, -5, 0] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-            >
+            <span className="ml-2 mt-1 inline-block">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#e6a61e]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-            </motion.span>
+            </span>
           </h3>
           
           {/* Decorative element */}
-          <motion.div 
-            className="absolute -left-10 top-1/2 transform -translate-y-1/2 hidden md:block"
-            initial={{ height: 0 }}
-            animate={{ height: 100 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
+          <div className="absolute -left-10 top-1/2 transform -translate-y-1/2 hidden md:block">
             <div className="h-[100px] w-1 bg-gradient-to-b from-[#e6a61e] to-transparent rounded-full"></div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
-        {/* Enhanced Description */}
-        <motion.div 
-          className="mb-10 bg-white/50 backdrop-blur-sm p-5 rounded-xl shadow-sm border border-gray-100 relative overflow-hidden"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-        >
+        {/* Description */}
+        <div className="mb-10 bg-white/50 backdrop-blur-sm p-5 rounded-xl shadow-sm border border-gray-100 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-2 h-full bg-[#e6a61e]"></div>
           <p className="text-gray-700 max-w-md text-lg leading-relaxed font-raleway pl-3">
             I'm a Full-Stack Developer with <span className="text-[#2c4035] font-semibold">2 years</span> of experience, currently pursuing a Computer Science degree 
             at FAST University Islamabad. Skilled in building responsive web applications using modern frameworks and technologies.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Improved Social Media Icons */}
-        <motion.div 
-          className="flex gap-4 mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
+        {/* Social Media Icons */}
+        <div className="flex gap-4 mb-10">
           {socialLinks.map((social, index) => (
-            <motion.a 
+            <a 
               key={social.name}
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
               className="group"
               aria-label={social.name}
-              whileHover={{ scale: 1.1 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ 
-                opacity: 1, 
-                y: 0,
-                transition: { delay: 0.6 + (index * 0.1) }
-              }}
             >
-              <motion.div 
-                className="w-12 h-12 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-[#2c4035] hover:text-white hover:border-[#2c4035] transition-all duration-300 shadow-sm"
-                whileHover={{ boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }}
-              >
+              <div className="w-12 h-12 rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                   <path d={social.icon} />
                 </svg>
-              </motion.div>
-            </motion.a>
+              </div>
+            </a>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Enhanced Buttons */}
-        <motion.div 
-          className="flex gap-4 flex-col sm:flex-row"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-        >
-          <motion.button 
+        {/* Buttons */}
+        <div className="flex gap-4 flex-col sm:flex-row">
+          <button 
             onClick={handleScrollToProjects}
-            className="group flex items-center justify-center gap-3 bg-gradient-to-r from-[#2c4035] to-[#1a2d25] text-white px-8 py-4 rounded-full shadow-lg hover:shadow-xl relative overflow-hidden"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="flex items-center justify-center gap-3 bg-gradient-to-r from-[#2c4035] to-[#1a2d25] text-white px-8 py-4 rounded-full shadow-lg relative overflow-hidden"
           >
-            <motion.span 
-              className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#e6a61e] to-[#f8c054] opacity-0"
-              whileHover={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            ></motion.span>
-            <span className="relative font-poppins font-medium">View My Projects</span>
-            <motion.div 
-              className="relative w-7 h-7 bg-white rounded-full flex items-center justify-center text-[#2c4035]"
-              whileHover={{ backgroundColor: '#2c4035', color: '#ffffff' }}
-              transition={{ duration: 0.3 }}
-            >
+            <span className="font-poppins font-medium">View My Projects</span>
+            <div className="w-7 h-7 bg-white rounded-full flex items-center justify-center text-[#2c4035]">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
               </svg>
-            </motion.div>
-          </motion.button>
+            </div>
+          </button>
           
-          <motion.div 
-            className="group relative border border-gray-300 px-8 py-4 rounded-full hover:border-[#e6a61e] transition-all duration-300 font-poppins font-medium overflow-hidden"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <motion.span 
-              className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#e6a61e]/10 to-[#f8c054]/10 opacity-0"
-              whileHover={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            ></motion.span>
+          <div className="border border-gray-300 px-8 py-4 rounded-full font-poppins font-medium overflow-hidden">
             <a 
               href="mailto:rihabrabbani16@gmail.com" 
-              className="relative flex items-center justify-center gap-2"
+              className="flex items-center justify-center gap-2"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#2c4035]" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
@@ -221,73 +128,41 @@ export default function Hero() {
               </svg>
               Hire Me
             </a>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
         
         {/* Current availability status */}
-        <motion.div 
-          className="mt-8 flex items-center gap-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
-        >
-          <motion.div 
-            className="w-3 h-3 bg-green-500 rounded-full"
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          ></motion.div>
+        <div className="mt-8 flex items-center gap-2">
+          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
           <span className="text-sm text-gray-600 font-poppins">Available for new projects</span>
-        </motion.div>
+        </div>
       </div>
 
       {/* Right Section - Image */}
-      <motion.div 
-        className="relative flex items-center justify-center"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        {/* Enhanced Circle Background */}
-        <motion.div 
-          className="absolute w-[95%] h-[95%] rounded-full bg-gradient-to-br from-[#ffb81e] to-[#e6a61e] z-0"
-          animate={{ scale: [1, 1.03, 1] }}
-          transition={{ repeat: Infinity, duration: 4 }}
-        ></motion.div>
+      <div className="relative flex items-center justify-center">
+        {/* Circle Background */}
+        <div className="absolute w-[95%] h-[95%] rounded-full bg-gradient-to-br from-[#ffb81e] to-[#e6a61e] z-0"></div>
         <div className="absolute w-[95%] h-[95%] rounded-full z-1 opacity-20 bg-[url('/pattern.png')]"></div>
         
         {/* Patterned border */}
-        <motion.div 
-          className="absolute w-[92%] h-[92%] rounded-full border-2 border-dashed border-white/30 z-1"
-          animate={{ rotate: 360 }}
-          transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
-        ></motion.div>
+        <div className="absolute w-[92%] h-[92%] rounded-full border-2 border-dashed border-white/30 z-1"></div>
         
         {/* Professional Image */}
         <div className="relative z-10 shadow-2xl rounded-3xl overflow-hidden">
           {/* Image Frame */}
           <div className="p-1.5 bg-white rounded-3xl shadow-inner">
             <div className="relative overflow-hidden rounded-2xl">
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.7 }}
-              >
-                <Image
-                  src="/me.png"
-                  alt="Rihab Rabbani - Full Stack Developer"
-                  width={520}
-                  height={600}
-                  className="object-cover object-top h-[600px]"
-                  priority
-                />
-              </motion.div>
+              <Image
+                src="/me.png"
+                alt="Rihab Rabbani - Full Stack Developer"
+                width={520}
+                height={600}
+                className="object-cover object-top h-[600px]"
+                priority
+              />
               
-              {/* Enhanced Professional Tags */}
-              <motion.div 
-                className="absolute -bottom-4 -left-10 bg-white/10 backdrop-blur-lg text-white px-6 py-3 rounded-xl shadow-lg border border-white/20"
-                initial={{ x: -50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-              >
+              {/* Professional Tags */}
+              <div className="absolute -bottom-4 -left-10 bg-white/10 backdrop-blur-lg text-white px-6 py-3 rounded-xl shadow-lg border border-white/20">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-lg bg-[#e6a61e] flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -299,14 +174,9 @@ export default function Hero() {
                     <div className="text-xs opacity-70">MERN Stack Specialist</div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
               
-              <motion.div 
-                className="absolute top-10 -right-8 bg-white backdrop-blur-lg text-[#2c4035] px-6 py-3 rounded-xl shadow-lg border border-[#e6a61e]/20"
-                initial={{ x: 50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-              >
+              <div className="absolute top-10 -right-8 bg-white backdrop-blur-lg text-[#2c4035] px-6 py-3 rounded-xl shadow-lg border border-[#e6a61e]/20">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-lg bg-[#2c4035] flex items-center justify-center text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -318,71 +188,44 @@ export default function Hero() {
                     <div className="text-xs opacity-70">React & Node.js Expert</div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
           
-          {/* Enhanced Circular Tag */}
-          <motion.div 
-            className="absolute -right-6 top-1/3 w-32 h-32 rounded-full bg-gradient-to-br from-[#2c4035]/95 to-[#1a2d25]/95 backdrop-blur-md flex items-center justify-center text-white border-4 border-white/20 shadow-xl"
-            animate={{ y: [0, -15, 0] }}
-            transition={{ repeat: Infinity, duration: 6 }}
-          >
+          {/* Circular Tag */}
+          <div className="absolute -right-6 top-1/3 w-32 h-32 rounded-full bg-gradient-to-br from-[#2c4035]/95 to-[#1a2d25]/95 backdrop-blur-md flex items-center justify-center text-white border-4 border-white/20 shadow-xl">
             <div className="text-center relative">
               <div className="text-sm font-poppins font-semibold tracking-wider">HIRE ME</div>
-              <motion.div 
-                className="text-xl mt-1 transform -rotate-12"
-                animate={{ y: [0, -5, 0] }}
-                transition={{ repeat: Infinity, duration: 3 }}
-              >✈</motion.div>
+              <div className="text-xl mt-1 transform -rotate-12">✈</div>
               <div className="text-xs font-poppins">HERE</div>
               {/* Orbit effect */}
               <div className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2">
-                <motion.div 
-                  className="w-full h-full rounded-full border border-white/20"
-                  animate={{ rotate: 360 }}
-                  transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-                ></motion.div>
+                <div className="w-full h-full rounded-full border border-white/20"></div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
         
         {/* Experience badge */}
-        <motion.div 
-          className="absolute -bottom-4 right-10 bg-white shadow-xl px-5 py-3 rounded-full z-20 border-2 border-[#e6a61e]"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.5 }}
-          whileHover={{ y: -5, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
-        >
+        <div className="absolute -bottom-4 right-10 bg-white shadow-xl px-5 py-3 rounded-full z-20 border-2 border-[#e6a61e]">
           <div className="flex items-center gap-3">
             <span className="text-[#2c4035] font-bold text-2xl font-poppins">2+</span>
             <span className="text-gray-700 text-sm font-poppins">Years<br/>Experience</span>
           </div>
-        </motion.div>
+        </div>
         
         {/* Tech stack cloud */}
-        <motion.div 
-          className="absolute -bottom-20 left-0 right-0 mx-auto w-4/5 bg-white/80 backdrop-blur-md p-4 rounded-xl shadow-lg border border-gray-100 hidden md:block"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1.1, duration: 0.5 }}
-        >
+        <div className="absolute -bottom-20 left-0 right-0 mx-auto w-4/5 bg-white/80 backdrop-blur-md p-4 rounded-xl shadow-lg border border-gray-100 hidden md:block">
           <p className="text-center text-xs text-gray-500 mb-3 font-poppins">Technologies I work with</p>
           <div className="flex justify-between items-center opacity-70">
             {['React', 'Node.js', 'MongoDB', 'Next.js', 'Express'].map((tech, i) => (
-              <motion.div 
-                key={i} 
-                className="text-gray-800 font-bold text-sm font-poppins"
-                whileHover={{ scale: 1.2, color: '#2c4035' }}
-              >
+              <div key={i} className="text-gray-800 font-bold text-sm font-poppins">
                 {tech}
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </main>
   );
 }

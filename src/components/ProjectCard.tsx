@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 interface ProjectStat {
@@ -36,34 +35,18 @@ export default function ProjectCard({
   stats
 }: ProjectCardProps) {
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.5 }}
-      className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
-      whileHover={{ y: -8 }}
-    >
+    <div className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group">
       <div className="relative h-64 overflow-hidden">
         {/* Project Image/Gradient */}
-        <motion.div 
-          className={`absolute inset-0 ${gradient} flex items-center justify-center text-white`}
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div className={`absolute inset-0 ${gradient} flex items-center justify-center text-white`}>
           <div className="p-6 text-center">
             <div className="text-white text-5xl mb-4 font-bold font-abril">{title.split(' ')[0]}</div>
             <p className="text-white/90 font-raleway">{subtitle}</p>
           </div>
-        </motion.div>
+        </div>
         
-        {/* Project overlay with quick stats */}
-        <motion.div 
-          className="absolute inset-0 bg-black/60 backdrop-blur-sm flex flex-col justify-end p-6"
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
+        {/* Project overlay with quick stats - now properly hidden until hover */}
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="bg-white/10 backdrop-blur-md p-3 rounded-lg">
             <div className="grid grid-cols-2 gap-2 text-center">
               {stats.map((stat, i) => (
@@ -74,7 +57,7 @@ export default function ProjectCard({
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
       
       <div className="p-6">
@@ -89,41 +72,34 @@ export default function ProjectCard({
         {/* Technologies */}
         <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech) => (
-            <motion.span 
+            <span 
               key={tech} 
-              className="bg-[#f5f5f5] text-[#2c4035] px-3 py-1 rounded-full text-xs font-medium hover:bg-[#e6a61e]/10 transition-colors font-raleway"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="bg-[#f5f5f5] text-[#2c4035] px-3 py-1 rounded-full text-xs font-medium font-raleway"
             >
               {tech}
-            </motion.span>
+            </span>
           ))}
         </div>
         
         <div className="flex justify-between items-center">
-          <motion.a 
+          <a 
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#e6a61e] font-medium flex items-center gap-1 hover:text-[#2c4035] transition-colors group font-raleway"
-            whileHover={{ x: 3 }}
-            whileTap={{ scale: 0.95 }}
+            className="text-[#e6a61e] font-medium flex items-center gap-1 font-raleway hover:text-[#2c4035] transition-colors"
           >
             <span>{linkText}</span>
-            <motion.svg 
-              className="w-4 h-4" 
+            <svg 
+              className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" 
               viewBox="0 0 20 20" 
               fill="currentColor"
-              animate={{ x: 0 }}
-              whileHover={{ x: 3 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
               <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-            </motion.svg>
-          </motion.a>
+            </svg>
+          </a>
           <span className="text-gray-400 text-sm font-raleway">{date}</span>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
