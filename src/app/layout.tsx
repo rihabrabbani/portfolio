@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ClientWrapper from "./clientwrapper"
 import {
   Raleway,
   Cormorant_Garamond,
@@ -68,7 +69,7 @@ export default function RootLayout({
       <body
         className={`${raleway.variable} ${cormorant.variable} ${abrilFatface.variable} ${playfair.variable} ${poppins.variable} antialiased`}
       >
-        <AnimatePresence>{children}</AnimatePresence>
+        <ClientWrapper>{children}</ClientWrapper>
       </body>
     </html>
   );
