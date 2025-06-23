@@ -8,6 +8,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { AnimatePresence } from "framer-motion";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -67,7 +68,7 @@ export default function RootLayout({
       <body
         className={`${raleway.variable} ${cormorant.variable} ${abrilFatface.variable} ${playfair.variable} ${poppins.variable} antialiased`}
       >
-        {children}
+        <AnimatePresence>{children}</AnimatePresence>
       </body>
     </html>
   );

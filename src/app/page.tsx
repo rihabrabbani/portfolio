@@ -1,5 +1,6 @@
-'use client'
+'use client';
 
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
@@ -207,7 +208,14 @@ export default function Home() {
         <Hero />
 
         {/* Project Showcase Section */}
-        <div id="projects" className="py-20 relative overflow-hidden">
+        <motion.div
+          id="projects"
+          className="py-20 relative overflow-hidden"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
           {/* Background for Projects Section */}
           <div className="absolute inset-0 z-0">
             {/* Base gradient */}
@@ -254,10 +262,17 @@ export default function Home() {
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Skills Section */}
-        <div id="skills" className="py-20 bg-gradient-to-b from-[#f9f9f9] to-[#f0f0f0] relative overflow-hidden">
+        <motion.div
+          id="skills"
+          className="py-20 bg-gradient-to-b from-[#f9f9f9] to-[#f0f0f0] relative overflow-hidden"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
           {/* Use CSS grid pattern instead of an image */}
           <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[repeating-linear-gradient(45deg,#e6a61e10,#e6a61e10_1px,transparent_1px,transparent_10px)]"></div>
           
@@ -278,7 +293,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Education Section */}
         <div id="education" className="py-20 bg-white relative overflow-hidden">
@@ -334,7 +349,14 @@ export default function Home() {
         </div>
 
         {/* Stats Section */}
-        <div id="achievements" className="bg-gradient-to-r from-[#2c4035] to-[#1e2e26] text-white py-24 mt-20 relative overflow-hidden">
+        <motion.div
+          id="achievements"
+          className="bg-gradient-to-r from-[#2c4035] to-[#1e2e26] text-white py-24 mt-20 relative overflow-hidden"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
           {/* Use a CSS grid pattern for the background */}
           <div className="absolute inset-0 opacity-10 bg-[linear-gradient(30deg,#ffffff10_1px,transparent_1px),linear-gradient(150deg,#ffffff10_1px,transparent_1px)] bg-[size:25px_25px]"></div>
           
@@ -376,9 +398,8 @@ export default function Home() {
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
 }
-          

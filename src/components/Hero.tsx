@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 interface SocialLink {
@@ -23,7 +24,13 @@ export default function Hero() {
   };
 
   return (
-    <main id="home" className="grid md:grid-cols-2 gap-12 px-6 py-24 sm:px-8 md:px-20 md:py-32 max-w-7xl mx-auto relative z-10">
+    <motion.main
+      id="home"
+      className="grid md:grid-cols-2 gap-12 px-6 py-24 sm:px-8 md:px-20 md:py-32 max-w-7xl mx-auto relative z-10"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
       {/* Left Section - Text Content */}
       <div className="flex flex-col justify-center">
         {/* Hello There Box */}
@@ -226,6 +233,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-    </main>
+    </motion.main>
   );
 }

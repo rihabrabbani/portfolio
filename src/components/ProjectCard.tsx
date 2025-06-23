@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 interface ProjectStat {
@@ -35,7 +36,13 @@ export default function ProjectCard({
   stats
 }: ProjectCardProps) {
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+    <motion.div
+      className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+    >
       <div className="relative h-64 overflow-hidden">
         {/* Project Image/Gradient */}
         <div className={`absolute inset-0 ${gradient} flex items-center justify-center text-white`}>
@@ -100,6 +107,6 @@ export default function ProjectCard({
           <span className="text-gray-400 text-sm font-raleway">{date}</span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
